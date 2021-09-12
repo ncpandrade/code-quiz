@@ -11,10 +11,7 @@ var questions = [
   // We start the game with a score of 0.
   // var score = 0;
   
-  // Loop over every question object
-  // for (var i = 0; i < questions.length; i++) {
-    // Display current question to user and ask OK/Cancel
-    // var answer = confirm(questions[i].question);
+  
   
     // Compare answers
     // if (
@@ -82,5 +79,10 @@ function countdown() {
 function startQuiz(){
   var startScreen = document.getElementById('start-screen-id');
   startScreen.setAttribute('style', 'display:none');
-  questionsEl.textContent = questions[0];
-}
+    // Loop over every question object
+    for (var i = 0; i < questions.length; i++) {
+    // Display current question to user
+      document.write(questions[i].question);
+      
+
+  }}
