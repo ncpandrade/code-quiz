@@ -81,8 +81,18 @@ function startQuiz(){
   startScreen.setAttribute('style', 'display:none');
     // Loop over every question object
     for (var i = 0; i < questions.length; i++) {
-    // Display current question to user
+      // Display current question to user
       document.write(questions[i].question);
+      //create buttons with answer choices using for loop
+      for (var i = 0; i < questions.length; i++){
+        var btn = document.createElement("button");
+        var choices = document.createTextNode(questions[1][i]);
+        btn.appendChild(questions[1][i]);
+        document.body.appendChild(btn);
+      }
+
       
 
-  }}
+  }
+
+}
