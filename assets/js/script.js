@@ -84,10 +84,10 @@ function startQuiz(){
       // Display current question to user
       document.write(questions[i].question);
       //create buttons with answer choices using for loop
-      for (var i = 0; i < questions.length; i++){
+      for (var index = 0; index < questions[i].choice.length; index++){
         var btn = document.createElement("button");
-        var choices = document.createTextNode(questions[1][i]);
-        btn.appendChild(questions[1][i]);
+        var choices = document.createTextNode(questions[i].choice[index]);
+        btn.appendChild(choices);
         document.body.appendChild(btn);
       }
 
