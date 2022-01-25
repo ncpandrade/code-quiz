@@ -1,63 +1,63 @@
-// questions --------------
+// Array of questions for the quiz.
 var questions = [
+    {
+        question: "What is an array used for?",
+        choices: ["storing numbers and strings", "iterating through data", "displaying content", "none of the above"],
+        answer: "storing numbers and strings"
+    },
+    {
+        question: "String values must be enclosed within ____ when being assigned to variables.",
+        choices: ["commas", "curly brackets", "quotes", "parenthesis"],
+        answer: "quotes"
+    },
+    {
+        question: "A useful tool to debug code and print content is:",
+        choices: ["for()", "document.getElement", ".addEventListener", "console.log()"],
+        answer: "console.log()"
+    },
     { 
-        question: 'Which is incorrect? Commonly used data types include:',
-        choices: ['strings', 'booleans', 'alerts', 'numbers'],
-        answer:  'alerts'
-    },
-    {
-        question: 'The condition in an if/else statement is enclosed with____________.',
-        choices: ['quotes', 'curly brackets', 'parenthesis', 'square brackets'],
-        answer: 'parenthesis'
-    },
-    {
-        question: 'Arrays in JavaScript can be used to store ____________.',
-        choices: ['numbers and strings', 'other arrays', 'booleans', 'all of the above'],
-        answer: 'all of the above'
+        question: 'Who invented JavaScript?', 
+        choices: ['Elon Musk', 'Steve Jobs', 'Bill Gates', 'Brendan Eich'],
+        answer: 'Brendan Eich' 
     },
     {    
-        question: 'String values must be enclosed within__________ when being assigned to variables.',
-        choices: ['commas', 'curly brackets', 'quotes', 'parenthesis'],
-        answer: 'quotes'
-    },
-    {
-        question: 'A very useful tool used during development and debugging for printing content to the debugger is:',
-        choices: ['JavaScript', 'terminal/bash', 'for loops', 'console.log'],
-        answer: 'console.log'
+        question: "Which of the following is a data type?",
+        choices: ["prompt", "boolean", "alert", "variable"],
+        answer: "boolean"
     },
   ];
 
-  // Create a variable each question 18 sec * 5 questions total (90sec time) and 10 sec penalty for wrong answer----------------
 var score = 0;
 var questionIndex = 0;
-var secondsLeft = questions.length * 18;
+var secondsLeft = questions.length * 20;
 var holdInterval = 0;
+// 10 second penalty for incorrect answer
 var penalty = 10;
-var hideResponseTimeout = null;
-// var elements --------------
-var elements = {
-    startQuiz: document.querySelector("#playGame"),
-    wrapper: document.querySelector("#cover"),
-    question: document.querySelector("#content"),
-    questionChoice: document.querySelector("#Option"),
-    intro: document.querySelector("#preface"),
-    questionTitle: document.querySelector("#Tag"),
-    correct: document.querySelector("#true"),
-    wrong: document.querySelector("#false"),
-    currentTime: document.querySelector("#presentPeriod"),
-    viewHighScores: document.querySelector("#viewScore"),
-    initials: document.querySelector("#signature"),
-    submitInitials: document.querySelector("#giveIn"),
-    inputInitials: document.querySelector("#mark"),
-    timer: document.querySelector("#startTime"),
-    scores: document.querySelector("#rates"),
-    highScore: document.querySelector("#text"),
-    clear: document.querySelector("#erase"),
-    goBack: document.querySelector("#startOver"),
-    finalScore: document.querySelector("#result"),
- };
 
- // functions to present wrapper document---------------
+var hideResponseTimeout = null;
+
+  var elements = {
+     startQuiz: document.querySelector("#startQuiz"),
+     wrapper: document.querySelector("#wrapper"),
+     question: document.querySelector("#question"),
+     questionChoice: document.querySelector("#questionChoice"),
+     intro: document.querySelector("#intro"),
+     questionTitle: document.querySelector("#questionTitle"),
+     correct: document.querySelector("#correct"),
+     wrong: document.querySelector("#wrong"),
+     currentTime: document.querySelector("#currentTime"),
+     viewHighScores: document.querySelector("#viewHighScores"),
+     initials: document.querySelector("#initials"),
+     submitInitials: document.querySelector("#submitInitials"),
+     inputInitials: document.querySelector("#inputInitials"),
+     timer: document.querySelector("#startTime"),
+     scores: document.querySelector("#scores"),
+     highScore: document.querySelector("#highScore"),
+     clear: document.querySelector("#clear"),
+     goBack: document.querySelector("#goBack"),
+     finalScore: document.querySelector("#finalScore"),
+  };
+
 function showWrapperElement(element) {
     var children = elements.wrapper.children;
     for (var i = 0; i < children.length; i++) {
@@ -78,7 +78,7 @@ function showElement(element) {
 function hideElement(element) {
     element.style.display = "none";
 }
-// function to start the timer and quiz-----------------
+
 function startQuiz() {
     startTimer();
     showQuizItem(0);
@@ -89,7 +89,7 @@ function hideResponse () {
     hideElement(elements.correct);
     hideElement(elements.wrong);
 }
-// questions content------------------
+
 function showQuizItem(number) {
     showWrapperElement();
     var delay = number? 2000:0;
@@ -99,7 +99,7 @@ function showQuizItem(number) {
     showChoices(number);
     showWrapperElement(elements.question);
 }
-// questions options-------------------
+
 function showChoices(number) {
     var choices = questions[number].choices;
     removeAllChildNodes(elements.questionChoice);
@@ -110,14 +110,14 @@ function showChoices(number) {
         listItem.addEventListener("click", onChoice);
     })
 };
-// remove child node in the memory------------
+
 function removeAllChildNodes(parent) {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
     }
 }
 
-// triggers when time is over 
+// triggers timer on click
  function startTimer() {
     if (holdInterval) {
         return
@@ -135,7 +135,7 @@ function removeAllChildNodes(parent) {
     }, 1000);
 };
 
-// the choices & correct answer comparison-------------------
+// compare choices with answer
 function onChoice(event) {
     clearTimeout(hideResponseTimeout);
     hideResponse();
@@ -164,7 +164,7 @@ function onChoice(event) {
 
 function finishQuiz() {
    
-    //  remaining time & score---------------------
+    // calculate time remaining and show score
     if (secondsLeft < 0) {
         secondsLeft = 0;
     }
@@ -195,7 +195,7 @@ function getAllScores() {
     return allScores;
 }
     
-    // localstorage sign and score collection-------------------
+    // set local storage for initials and score
     function onInitialsEntered() {
         var initials = elements.inputInitials.value;
 
@@ -216,26 +216,27 @@ function getAllScores() {
 
 }
 
-//  localstorage clear ---------------------
+// Clear scores
 elements.submitInitials.addEventListener("click", onInitialsEntered);
-erase.addEventListener("click", function() {
-    //  clear----------------------
+clear.addEventListener("click", function() {
     localStorage.clear();
     showScores();
 });
-// result, time  function-----------------
+
 elements.goBack.addEventListener("click", function () {
      score = 0;
      questionIndex = 0;
-     secondsLeft = questions.length * 18;
+     secondsLeft = questions.length * 20;
      holdInterval = 0;
      elements.currentTime.textContent = "";
      elements.inputInitials.value = "";
     showWrapperElement(elements.intro);
     
 });
-// run--------------------------
+
 elements.viewHighScores.addEventListener("click", showScores);
 
 showWrapperElement(elements.intro);
 elements.startQuiz.addEventListener("click", startQuiz);
+
+    

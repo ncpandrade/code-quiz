@@ -1,69 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coding Quiz</title>
     <link rel="stylesheet" href="./assets/style.css" />
-  </head>
-  <body>
+</head>
+<body>
     <div>
-      <h3 id="viewScore">View high scores</h3>
+        <h3 id="viewHighScores">View high scores</h3>
     </div>
     <div>
-      <h3 id="countdown">
-        Time:
-        <span id="presentPeriod"></span>
-      </h3>
+        <h3 id="timer">
+            Time:
+            <span id="currentTime"></span>
+        </h3>
     </div>
-    <div id="cover" style="display: none">
-      <div id="preface">
-        <h1>Coding Quiz</h1>
-        <p>
-          Try to answer the following code-related questions within the time
-          limit. Keep in mind that incorrect answers will penalize your
-          score/time by ten seconds!
-        </p>
-        <!-- play button-->
-        <button id="playGame">Start Quiz</button>
-      </div>
-      <!-- unordered HTML list (questions and options)-->
-      <div id="content">
-        <h1 id="Tag">question title</h1>
-        <ul id="Option">
-          <li>choice 1</li>
-          <li>choice 2</li>
-          <li>choice 3</li>
-          <li>choice 4</li>
-        </ul>
-        <!-- answers t/f-->
-        <div class="answer" id="true">Correct!</div>
-        <div class="answer" id="false">Wrong!</div>
-      </div>
-      <!-- sign and submission and scores -->
-      <div id="signature">
-        <h1>All done!</h1>
-        <p>
-          Your final score is
-          <span id="result">22</span>
-        </p>
-        <p>
-          <label>
-            Enter initials:
-            <input id="mark" />
-          </label>
-          <button id="giveIn">Submit</button>
-        </p>
-      </div>
-      <!-- startOver and clear local storage -->
-      <div id="rates">
+    <div id="wrapper" style="display: none">
+        <div id="intro">
+            <h1>Coding Quiz</h1>
+            <p>Answer the following questions within the time limit. Incorrect answers will deduct ten seconds from your time!</p>
+            <!-- <ul id="questionsUl"></ul> -->
+            <button id="startQuiz">Start Quiz</button>
+        </div>
+        <div id="question">
+            <h1 id="questionTitle">question title</h1>
+            <ul id="questionChoice">
+                <li>choice 1</li>
+                <li>choice 2</li>
+                <li>choice 3</li>
+                <li>choice 4</li>
+            </ul>
+            <div class="answer" id="correct">
+                Correct!
+            </div>
+            <div class="answer" id="wrong">
+                Wrong!
+            </div>
+        </div>
+        <div id="initials">
+            <h1>All done!</h1>
+            <p>Your final score is
+                <span id="finalScore">22</span>
+            </p>
+            <p>
+                <label>
+                    Enter initials:
+                    <input id="inputInitials">
+                </label>
+                <button id="submitInitials">Submit</button>
+            </p>
+        </div>
+        <div id="scores">
         <h1>Highscores</h1>
-        <ul id="text"></ul>
-        <button id="startOver">Go Back</button>
-        <button id="erase" value="reset">Clear Highscore</button>
-      </div>
+            <ul id="highScore"></ul>
+            <button id="goBack">Go Back</button>
+            <button id="clear" value="reset">Clear Highscore</button>
+        </div>
     </div>
-    <script src="./assets/js/script.js"></script>
-  </body>
+<script src="./assets/script.js"></script>
+</body>
 </html>
