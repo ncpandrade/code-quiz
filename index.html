@@ -22,21 +22,21 @@
             <h1>Coding Quiz</h1>
             <p>Answer the following questions within the time limit. Incorrect answers will deduct ten seconds from your time!</p>
             <!-- <ul id="questionsUl"></ul> -->
-            <button id="startQuiz">Start Quiz</button>
+            <button id="beginQuiz">Start Quiz</button>
         </div>
         <div id="question">
             <h1 id="questionTitle">question title</h1>
-            <ul id="questionChoice">
-                <li>choice 1</li>
-                <li>choice 2</li>
-                <li>choice 3</li>
-                <li>choice 4</li>
+            <ul id="answerOption">
+                <li>answer 1</li>
+                <li>answer 2</li>
+                <li>answer 3</li>
+                <li>answer 4</li>
             </ul>
             <div class="answer" id="correct">
                 Correct!
             </div>
             <div class="answer" id="wrong">
-                Wrong!
+                Incorrect!
             </div>
         </div>
         <div id="initials">
@@ -46,7 +46,7 @@
             </p>
             <p>
                 <label>
-                    Enter initials:
+                    Enter your initials:
                     <input id="inputInitials">
                 </label>
                 <button id="submitInitials">Submit</button>
@@ -55,7 +55,7 @@
         <div id="scores">
         <h1>Highscores</h1>
             <ul id="highScore"></ul>
-            <button id="goBack">Go Back</button>
+            <button id="goBack">Start Over</button>
             <button id="clear" value="reset">Clear Highscore</button>
         </div>
     </div>

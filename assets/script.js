@@ -37,10 +37,10 @@ var penalty = 10;
 var hideResponseTimeout = null;
 
   var elements = {
-     startQuiz: document.querySelector("#startQuiz"),
+     beginQuiz: document.querySelector("#beginQuiz"),
      wrapper: document.querySelector("#wrapper"),
      question: document.querySelector("#question"),
-     questionChoice: document.querySelector("#questionChoice"),
+     answerOption: document.querySelector("#answerOption"),
      intro: document.querySelector("#intro"),
      questionTitle: document.querySelector("#questionTitle"),
      correct: document.querySelector("#correct"),
@@ -79,7 +79,7 @@ function hideElement(element) {
     element.style.display = "none";
 }
 
-function startQuiz() {
+function beginQuiz() {
     startTimer();
     showQuizItem(0);
     
@@ -102,11 +102,11 @@ function showQuizItem(number) {
 
 function showChoices(number) {
     var choices = questions[number].choices;
-    removeAllChildNodes(elements.questionChoice);
+    removeAllChildNodes(elements.answerOption);
     choices.forEach(function (newItem) {
         var listItem = document.createElement("li");
         listItem.textContent = newItem;
-        elements.questionChoice.appendChild(listItem);
+        elements.answerOption.appendChild(listItem);
         listItem.addEventListener("click", onChoice);
     })
 };
@@ -237,6 +237,6 @@ elements.goBack.addEventListener("click", function () {
 elements.viewHighScores.addEventListener("click", showScores);
 
 showWrapperElement(elements.intro);
-elements.startQuiz.addEventListener("click", startQuiz);
+elements.beginQuiz.addEventListener("click", beginQuiz);
 
     
