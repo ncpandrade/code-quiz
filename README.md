@@ -7,6 +7,7 @@ A game that asks the user questions and the user gets to chose an answer from pr
 html
 javascript
 css
+localStorage
 
 
 
